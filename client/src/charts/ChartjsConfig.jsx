@@ -5,7 +5,7 @@ import { tailwindConfig, hexToRGB } from '../utils/Utils';
 
 Chart.register(Tooltip);
 
-// Define Chart.js default settings
+// Define Chart.js default network
 Chart.defaults.font.family = '"Inter", sans-serif';
 Chart.defaults.font.weight = '500';
 Chart.defaults.plugins.tooltip.borderWidth = 1;
