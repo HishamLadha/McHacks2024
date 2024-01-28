@@ -9,23 +9,22 @@ import axios from "axios";
 
 export const Network = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
-    const [machines, setMachines] = useState({});
-   // {'192.168.17.130': [
-     // [[21, '2.3.4', 'exploit/unix/ftp/vsftpd_234_backdoor', '']],
-       //[[5432, '8.3.0 - 8.3.7', 'exploit/linux/postgres/postgres_payload', 'LHOST']]
-    //]}
+    const [machines, setMachines] = useState([]);
+    
 
-
-    const renderMachines = .map((item, index) => (
-      <NetworkCard ipAddress={i.status} vm_name={item.name} vm_path={item.path} vm_ip={item.ip} vm_os={item.os}></NetworkCard>
+    const renderMachines = machines.map((row, rowIndex) => (
+      <NetworkCard ipAddress={row[0]} osVersion={"linux"}  macAddress={"00-B0-D0-63-C2-26"} data={row}></NetworkCard>
   ))
+
 
     useEffect(() => {
       axios.get("/machines")
-      .then((data) => {
-        console.log(data);
+      .then((res) => {
+        setMachines(res.data.machines)
       })
     }, []);
+    
+    useEffect(() => {},[machines])
 
   return ( 
   <div className="flex h-screen overflow-hidden">
@@ -46,18 +45,7 @@ export const Network = () => {
         <div className='grid lg:grid-cols-2 sm:grid-cols-1 md:grid-cols-2 gap-6'>
           
           <NetworkCard ipAddress={"192.168.0.1"} osVersion={"windows"} macAddress={"2132131"} ports={[{21:"vsftpd 2.3.4"}, {22:"OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)"},{21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"} ]}  />
-          {/* <NetworkCard ipAddress={"192.168.0.1"} osVersion={"linux"} macAddress={"2132131"} ports={[{21:"vsftpd 2.3.4"}, {22:"OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)"}, {21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"} ]}  />
-          <NetworkCard ipAddress={"192.168.0.1"} osVersion={"linux"} macAddress={"2132131"} ports={[{21:"vsftpd 2.3.4"}, {22:"OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)"},{21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"} ]}  />
-          <NetworkCard ipAddress={"192.168.0.1"} osVersion={"linux"} macAddress={"2132131"} ports={[]}  /> */}
-          {machines.map((entry, index) => (
-            <NetworkCard ipAddress={index} osVersion="linux"  macAddress={"N/A"} data={entry}/> 
-            // <div key={index}>
-            //   <strong>Port: {entry[0]}</strong>
-            //   <p>Version: {entry[1]}</p>
-            //   <p>Exploit: {entry[2]}</p>
-            //   <p>Description: {entry[3]}</p>
-            // </div>
-          ))}
+          {renderMachines}
         
         </div>
         {/* <ProgressBar/> */}

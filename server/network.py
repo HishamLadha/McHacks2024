@@ -25,7 +25,7 @@ class Network:
 
     def __init__(self, ip_range):
         self.ip_range = ip_range
-        self.machines = {}
+        self.machines = []
         self.vulnerable_ports = {}
 
     async def runInitialNetworkScan(self):
@@ -45,7 +45,6 @@ class Network:
             
             logging.debug("running scan on 1 ip")
             machine = Machine(self.ip_range)#in this case the range is just an ip
-            self.machines[machine.ip] = []
             ports = machine.scan("-sV")
             logging.debug("ports on "+str(self.ip_range))
             logging.debug(ports)
@@ -54,28 +53,30 @@ class Network:
                 logging.debug(result)
                 if result[0]:
                     result[1][0] = list(result[1][0])
-                    result[1][0][0] = port.port #overwrite the id
+                    result[1][0].insert(0,machine.ip)
+                    result[1][0][1] = port.port#overwrite the id
+
                     logging.warning("result: "+str(result[1]))
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
-                    self.machines[machine.ip].append(result[1])
+                    self.machines.append(result[1][0])
             print(self.machines)
             return
         
         for i in range(int(start), int(end)):
             machine = Machine(ip_start+"."+str(i))
-            self.machines[machine.ip] = []
             ports = machine.scan("-sV")
             for port in ports:
                 result = exploits.retrieve_data(port.service)
                 if result[0]:
                     result[1][0] = list(result[1][0])
-                    result[1][0][0] = port.port
+                    result[1][0].insert(0,machine.ip)
+                    result[1][0][1] = port.port#overwrite the id
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
-                    self.machines[machine.ip].append(result[1])
+                    self.machines.append(result[1][0])
 
             logging.debug("scan: "+str(ports))
 
