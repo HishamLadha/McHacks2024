@@ -236,3 +236,11 @@ span.flatpickr-weekday {
 .flatpickr-calendar.arrowBottom::after {
     display: none;
 }
+
+.front-container {
+    background-image: url('../images/hacker.png');
+    background-size: cover; /* Adjust as needed */
+    background-position: center; /* Adjust as needed */
+    /* Add any other styling properties you need for the container */
+  }
+  
