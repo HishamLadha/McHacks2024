@@ -47,7 +47,7 @@ async def post_getip(request: Request):
         if "ip_range" not in data.keys(): return JSONResponse(content={"status":"MISSING_KEY_NAME"}, status_code=422)
 
         ip_range = data.get("ip_range")
-
+        logging.debug("/scan called -> "+str(ip_range))
         network = Network(ip_range)
         network.runInitialNetworkScan()
 

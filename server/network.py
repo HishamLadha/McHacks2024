@@ -11,13 +11,13 @@ class Network:
     # has a propery of machine objects in a list
     # has a property of the ip range (start and end)
 
-    def __init__(self, range):
-        self.range = range
+    def __init__(self, ip_range):
+        self.ip_range = ip_range
         self.machines = []
 
     def runInitialNetworkScan(self):
         logging.debug("running initial network scan")
-        nums = self.range.split(".")
+        nums = self.ip_range.split(".")
         ip_start = ".".join(nums[0:3])
         start = None
         end = None
@@ -25,8 +25,11 @@ class Network:
             nums2 = nums[3].split("-")
             start = nums2[0]
             end = nums2[1]
+            logging.debug("scanning range from "+str(start)+" to "+str(end))
         else:
-            machine = Machine(range) #in this case the range is just an ip
+            logging.debug("running scan on 1 ip")
+            machine = Machine(self.ip_range)#in this case the range is just an ip
+            machine.scan("-sV")
             self.machines.append(machine)
             return
         
