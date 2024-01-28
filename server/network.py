@@ -35,6 +35,8 @@ class Network:
         ip_start = ".".join(nums[0:3])
         start = None
         end = None
+        if len(nums) != 4:
+            return
         if "-" in nums[3]:
             nums2 = nums[3].split("-")
             start = nums2[0]
@@ -48,7 +50,7 @@ class Network:
             logging.debug(ports)
             vulnerable_ports = []
             for port in ports:
-                if exploits.retrieve_data(port.service):
+                if exploits.retrieve_data(port.version):
                     # add the port to the machine
                     vulnerable_ports.append(port)
                     

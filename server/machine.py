@@ -12,7 +12,7 @@ class Port:
     def __init__(self, port, service, version):
         self.port = port
         self.service = service
-        self.version = service + " " + version
+        self.version = version
 
 class Machine:
     def __init__(self, ip):
@@ -38,7 +38,7 @@ class Machine:
         nm = nmap.PortScanner()
         nm.scan(hosts=self.ip, arguments=flags)
         logging.debug("scan complete for :"+str(self.ip))
-
+        logging.debug(nm.all_hosts())
         ports = []
 
         for host in nm.all_hosts():

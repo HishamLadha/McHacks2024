@@ -44,7 +44,7 @@ function Dashboard() {
           <div className="px-4 sm:px-6 lg:px-8 py-8 w-full max-w-9xl mx-auto">
 
             {/* Cards */}
-
+	    <div className="flex flex-row gap-4 justify-center items-center">
             <form action="" className='gap-4' onSubmit={handleScan}>
               <h4>Ip Range</h4>
               <input type="text"  value={ipRange} onChange={ev => setIpRange(ev.target.value)}/>
@@ -54,9 +54,9 @@ function Dashboard() {
             or
 
             <form action="" onSubmit={handleChaos}>
-              <input type="submit" value="Chaos" className='bg-red-500 rounded-md'/>
+              <input type="submit" value="Chaos" className='bg-red-500 rounded-md p-4'/>
             </form>
-             
+            </div>
           
 
           </div>
