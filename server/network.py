@@ -1,3 +1,4 @@
+import logging
 from machine import Machine
 
 class Network:
@@ -22,12 +23,10 @@ class Network:
             self.machines.append(machine)
             return
         
-        for i in range(start, end):
-            # create a machine object
-            machine = Machine(ip_start+"."+i)
-            # run the scan on the machine
-            machine.scan()
-            # add it to the machines list
+        for i in range(int(start), int(end)):
+            machine = Machine(ip_start+"."+str(i))
+            scan_data = machine.scan("-sV")
+            logging.debug("scan: "+scan_data)
             self.machines.append(machine)
 
     def getMachines(self):

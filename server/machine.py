@@ -17,11 +17,8 @@ class Machine:
         pass
 
     def scan(self, flags):
-        # now run a nmap scan on all ports on the machine
         nm = nmap.PortScanner()
         nm.scan(self.ip, flags)
-
-        # need to parse the data from the nmap scan
         return nm.all_hosts()
 
     def setName(self, name):

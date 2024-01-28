@@ -33,7 +33,8 @@ exploits.retrieve_data("vsftpd 2.3.4")
 
 @app.post("/scan")
 async def post_getip(request: Request):
-    try:
+    # try:
+        logging.debug("hh")
         data = await request.json()
 
         if "ip_range" not in data.keys(): return JSONResponse(content={"status":"MISSING_KEY_NAME"}, status_code=422)
@@ -44,8 +45,8 @@ async def post_getip(request: Request):
         network.runInitialNetworkScan()
 
 
-    except Exception as e:
-        return JSONResponse(content={"status":"GETIP_FAILED","detail":str(e)})
+    # except Exception as e:
+        # return JSONResponse(content={"status":"GETIP_FAILED","detail":str(e)})
 
 
 logging.basicConfig(level=logging.DEBUG)
