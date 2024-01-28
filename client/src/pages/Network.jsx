@@ -10,6 +10,14 @@ import NetworkCard from '../components/NetworkCard';
 export const Network = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [machines, setMachines] = useState({});
+    // {'192.168.17.130': [
+    //   [[21, '2.3.4', 'exploit/unix/ftp/vsftpd_234_backdoor', '']],
+    //    [[5432, '8.3.0 - 8.3.7', 'exploit/linux/postgres/postgres_payload', 'LHOST']]
+    // ]}
+
+    // const renderMachines = machines.map((item, index) => (
+    //   <NetworkCard ipAddress={i.status} vm_name={item.name} vm_path={item.path} vm_ip={item.ip} vm_os={item.os}></VMCard>
+  // ))
 
     useEffect(() => {
       axios.get("/machines")

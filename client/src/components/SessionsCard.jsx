@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 function SessionsCard() {
   const [command, setCommand] = useState('');
   const [result, setResult] = useState('');
+  const [ipAddress, setIpAddress] = useState("");
+  const [os, setOs] = useState("linux");
 
   const handleCommandChange = (event) => {
     setCommand(event.target.value);
@@ -10,17 +13,16 @@ function SessionsCard() {
   };
 
   const executeCommand = () => {
-    // Placeholder for command execution logic
-    // Send variable command to backend
-    // Listen for response from backend and place into finalResult variable
-    // then change the bottom to be setResult(result)
+    axios.post("/interact", {
+      
+    })
     setResult(`Executed command: ${command}`);
   };
 
   return (
     <div className="bg-white rounded-lg p-6 shadow-md">
-      <h2 className="text-lg font-bold mb-4 text-slate-900 dark:text-slate-800">IP address: 192.168.0.1</h2>
-      <h2 className="text-lg font-bold mb-4 text-slate-900 dark:text-slate-800">OS version: random_os_number</h2>
+      <h2 className="text-lg font-bold mb-4">IP address: {ipAddress}</h2>
+      <h2 className="text-lg font-bold mb-4">OS version: {os}</h2>
       <div className="mb-4">
         <label className="text-lg font-bold text-slate-900 dark:text-slate-800">Command:</label>
         <div className="flex mt-1">

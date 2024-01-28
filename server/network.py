@@ -28,7 +28,7 @@ class Network:
         self.machines = {}
         self.vulnerable_ports = {}
 
-    def runInitialNetworkScan(self):
+    async def runInitialNetworkScan(self):
         logging.debug("running initial network scan")
         nums = self.ip_range.split(".")
         ip_start = ".".join(nums[0:3])
@@ -51,8 +51,10 @@ class Network:
             logging.debug(ports)
             for port in ports:
                 result = exploits.retrieve_data(port.version)
+                logging.debug(result)
                 if result[0]:
-                    result[1][0] = port.port #overwrite the id
+                    result[1][0] = list(result[1][0])
+                    result[1][0][0] = port.port #overwrite the id
                     logging.warning("result: "+str(result[1]))
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
@@ -68,7 +70,8 @@ class Network:
             for port in ports:
                 result = exploits.retrieve_data(port.service)
                 if result[0]:
-                    result[1][0] = port.port
+                    result[1][0] = list(result[1][0])
+                    result[1][0][0] = port.port
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
