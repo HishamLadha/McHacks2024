@@ -6,7 +6,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
-
+import asyncio
 
 logging.basicConfig(
     level=logging.DEBUG,
@@ -40,6 +40,10 @@ exploits.retrieve_data("8.3.0 - 8.3.7")
 
 network = None
 
+@app.post("/interact")
+async def post_interact():
+    pass
+
 @app.post("/scan")
 async def post_getip(request: Request):
     # try:
@@ -52,8 +56,8 @@ async def post_getip(request: Request):
         logging.debug("/scan called -> "+str(ip_range))
         global network
         network = Network(ip_range)
-        network.runInitialNetworkScan()
-
+        asyncio.create_task(network.runInitialNetworkScan())
+        return JSONResponse(content={"status":"scan_started"})
 
     # except Exception as e:
         # return JSONResponse(content={"status":"GETIP_FAILED","detail":str(e)})

@@ -9,6 +9,18 @@ import {
 
 function InputForm() {
   const [isClicked, setisClicked] = useState(false);
+  const [ipRange, setIpRange] = useState("");
+  const [isScanning, setIsScanning] = useState(false);
+  const handleScan = (ev) => {
+    ev.preventDefault();
+    axios.post("/scan",{
+      ip_range:ipRange 
+    })
+    .then((data) => {
+      setIsScanning(true);
+    })
+    .catch((err) => {console.log(err)});    
+  }
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -29,6 +41,7 @@ function InputForm() {
           <Heading size='md' className='text-center' >
             Scan
           </Heading>
+          <p>Scan an IP address or range of IPs on a network to discover vulnerabilities and test them.</p>
           <br />
           <form className="max-w-sm" style={{ margin: '0 auto'}}>
             <div className='mb-5'>
@@ -41,6 +54,7 @@ function InputForm() {
                 placeholder="XXX.XXX.X.X or XXX.XXX.X.X-XXX"
                 required
                 width="full"
+                value={ipRange}
                 // backgroundColor={'#192235'}
                 className='dark:bg-slate-700 bg-white'
               />
@@ -77,7 +91,7 @@ function InputForm() {
         _hover={{
           opacity: 0.85 // Optional: style for hover state
         }}
-        onClick={() => setisClicked(true)}
+        onClick={handleScan}
       >Submit
       </Button>
 
