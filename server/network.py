@@ -26,7 +26,7 @@ class Network:
         for i in range(int(start), int(end)):
             machine = Machine(ip_start+"."+str(i))
             scan_data = machine.scan("-sV")
-            logging.debug("scan: "+scan_data)
+            logging.debug("scan: "+str(scan_data))
             self.machines.append(machine)
 
     def getMachines(self):

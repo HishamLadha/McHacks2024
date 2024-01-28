@@ -12,16 +12,13 @@ function Dashboard() {
 
   const handleScan = (ev) => {
     ev.preventDefault();
-    try {
+    axios.post("/scan",{
+        ip_range:ipRange 
+    })
+    .then((data) => {})
+    .catch((err) => {console.log(err)});
 
-      axios.post("/scan",{
-        ip_range: 
-      })
 
-
-    } catch (error) {
-      console.log(error)
-    }
     
   }
 
