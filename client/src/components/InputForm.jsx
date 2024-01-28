@@ -25,7 +25,7 @@ function InputForm() {
           <Heading size='md' className='text-center'>
             Scan
           </Heading>
-          <br /><br /><br />
+          <br />
           <form className="max-w-sm" style={{ margin: '0 auto' }}>
             <div className='mb-5'>
               <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
