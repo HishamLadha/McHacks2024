@@ -6,6 +6,7 @@ function SessionsCard() {
 
   const handleCommandChange = (event) => {
     setCommand(event.target.value);
+    // Send command to the session running in metasploit
   };
 
   const executeCommand = () => {
@@ -16,7 +17,7 @@ function SessionsCard() {
   return (
     <div className="bg-white rounded-lg p-6 shadow-md">
       <h2 className="text-lg font-bold mb-4">IP address: 192.168.0.1</h2>
-      <h2 className="text-lg font-bold mb-4">Machine name: server-name</h2>
+      <h2 className="text-lg font-bold mb-4">OS version: random_os_number</h2>
       <div className="mb-4">
         <label className="text-lg font-bold">Command:</label>
         <div className="flex mt-1">
