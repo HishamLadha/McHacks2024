@@ -37,6 +37,7 @@ exploits = database.ExploitDB()
 
 exploits.retrieve_data("vsftpd 2.3.4")
 
+network = None
 
 @app.post("/scan")
 async def post_getip(request: Request):
@@ -48,12 +49,42 @@ async def post_getip(request: Request):
 
         ip_range = data.get("ip_range")
         logging.debug("/scan called -> "+str(ip_range))
+        global network
         network = Network(ip_range)
         network.runInitialNetworkScan()
 
 
     # except Exception as e:
         # return JSONResponse(content={"status":"GETIP_FAILED","detail":str(e)})
+
+@app.post("/exploit")
+async def post_getip(request: Request):
+    # try:
+    logging.debug("welcome to the exploit endpoint")
+    data = await request.json()
+
+    if "port" not in data.keys(): return JSONResponse(content={"status":"MISSING_KEY_NAME"}, status_code=422)
+    if "rhost" not in data.keys(): return JSONResponse(content={"status":"MISSING_KEY_NAME"}, status_code=422)
+
+    logging.debug("The function exploit was called and the port is "+str(data.get("port"))+" and the rhost is "+str(data.get("rhost")))
+
+    machine = Machine(data.get("rhost"))
+    machine.exploitPort(data.get("port"))
+
+    # ip_range = data.get("ip_range")
+    # logging.debug("/scan called -> "+str(ip_range))
+    # network = Network(ip_range)
+    # network.runInitialNetworkScan()
+
+
+    # except Exception as e:
+        # return JSONResponse(content={"status":"GETIP_FAILED","detail":str(e)})
+
+@app.get("/machines")
+async def get_machines(request: Request):
+    global network
+    return JSONResponse(content={"machines":network.getMachines()})
+         
 
 @app.post("/status_scan")
 async def post_status_scan(request: Request):

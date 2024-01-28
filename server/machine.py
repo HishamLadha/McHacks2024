@@ -1,5 +1,8 @@
 import nmap
 import logging
+from console import Console
+
+console = Console()
 
 
 logging.basicConfig(
@@ -28,6 +31,7 @@ class Machine:
 
     def exploitPort(self, port):
         # run the exploit on the port
+        console
         pass
 
     def scan(self, flags):
