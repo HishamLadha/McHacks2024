@@ -51,6 +51,7 @@ class Network:
             logging.debug(ports)
             for port in ports:
                 result = exploits.retrieve_data(port.version)
+                logging.debug(result)
                 if result[0]:
                     result[1][0] = port.port #overwrite the id
                     logging.warning("result: "+str(result[1]))
