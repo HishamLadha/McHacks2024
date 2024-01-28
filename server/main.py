@@ -1,4 +1,4 @@
-
+import nmap
 
 class Network:
     # has a propery of machine objects in a list
@@ -46,13 +46,15 @@ class Machine:
 
     def exploitPort(self):
         # run the exploit on the port
-        # pass
+        pass
         
-    def scan(self):
+    def scan(self, flags):
         # now run a nmap scan on all ports on the machine
+        nm = nmap.PortScanner()
+        nm.scan(self.ip, flags)
 
         # need to parse the data from the nmap scan
-
+        return nm.all_hosts()
 
 
     def setName(self, name):

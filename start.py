@@ -3,6 +3,9 @@ import subprocess
 import webbrowser
 
 def start():
+
+    subprocess.check_call([sys.executable, "-m", "pip", "install", "-r", "requirements.txt"])
+
     # Step 1: Navigate to the client directory
     client_directory = './client'  # Replace with the actual path to your client directory
     os.chdir(client_directory)
