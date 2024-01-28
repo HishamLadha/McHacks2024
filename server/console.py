@@ -11,8 +11,7 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 class Console:
-    def __init__(self, db: ExploitDB) -> None:
-        self.db = db
+    def __init__(self) -> None:
         self.client = MsfRpcClient('yourpassword', ssl=True)
         self.exploit = None
         self.shells = {}

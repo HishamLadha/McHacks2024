@@ -1,7 +1,7 @@
 import nmap
 import logging
 from console import Console
-
+from database import ExploitDB
 console = Console()
 
 
