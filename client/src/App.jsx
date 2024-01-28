@@ -14,6 +14,7 @@ import { ChakraProvider } from '@chakra-ui/react'
 import Dashboard from './pages/Dashboard';
 import { Network } from './pages/Network';
 import Front from './pages/Front';
+import Sessions from './pages/Sessions';
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
         <Route exact path="/" element={<Front />} />
         <Route exact path="/scan" element={<Dashboard />} />
         <Route exact path="/network" element={<Network />} />
+        <Route exact path="/sessions" element={<Sessions />} />
         
       </Routes>
     </>
