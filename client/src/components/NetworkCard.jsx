@@ -33,7 +33,7 @@ function PortCard({ port, service, ipAddress }) {
   );
 }
 
-function NetworkCard({ ipAddress, osVersion, macAddress, ports }) {
+function NetworkCard({ ipAddress, osVersion, macAddress, ports, data}) {
   const [showPorts, setShowPorts] = useState(false); // State to control the visibility of the port cards
   let linux = false;
 
@@ -71,9 +71,8 @@ function NetworkCard({ ipAddress, osVersion, macAddress, ports }) {
 
         {showPorts && (
           <div className="grid grid-cols-2 gap-3">
-            {ports.map((portObj, index) => {
-              const [port, service] = Object.entries(portObj)[0];
-              return <PortCard key={index} port={port} service={service} ipAddress={ipAddress} />;
+            {data.map((portObj, index) => {
+              return <PortCard key={index} port={portObj[0][0]} service={"test"} ipAddress={ipAddress} />;
             })}
           </div>
         )}
