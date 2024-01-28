@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import ProgressBar from './ProgressBar';
-
+import axios from "axios";
 import logo from '/public/logo.png';
 import { 
   Card, CardBody, CardFooter, Stack, Heading, Button, Text, Input, Checkbox, Wrap, WrapItem 
@@ -55,7 +55,8 @@ function InputForm() {
                 required
                 width="full"
                 value={ipRange}
-                // backgroundColor={'#192235'}
+          	onChange={(ev) => setIpRange(ev.target.value)}      
+	  // backgroundColor={'#192235'}
                 className='dark:bg-slate-700 bg-white'
               />
             </div>
