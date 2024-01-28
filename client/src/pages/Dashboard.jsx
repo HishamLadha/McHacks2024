@@ -4,18 +4,21 @@ import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import InputForm from '../components/InputForm';
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [ipRange, setIpRange] = useState("");
-
+  const navigate = useNavigate();
   const handleScan = (ev) => {
     ev.preventDefault();
     axios.post("/scan",{
       ip_range:ipRange 
     })
-    .then((data) => {})
+    .then((data) => {
+      
+    })
     .catch((err) => {console.log(err)});    
   }
 
@@ -24,7 +27,9 @@ function Dashboard() {
     axios.post("/scan",{
       ip_range: "192.168.17.130"
     })
-    .then((data) => {})
+    .then((data) => {
+      
+    })
     .catch((err) => {console.log(err)}); 
   }
 
