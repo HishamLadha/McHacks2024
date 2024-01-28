@@ -44,8 +44,10 @@ async def assign_scan_result():
     await network.runInitialNetworkScan()
 
 @app.post("/interact")
-async def post_interact():
-    pass
+async def post_interact(request: Request):
+    logging.debug("attempting to interact with a session")
+    data = await request.json()
+
 
 @app.post("/scan")
 async def post_getip(request: Request):
