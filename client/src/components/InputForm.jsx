@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import ProgressBar from './ProgressBar';
+
+import logo from '/public/logo.png';
 import { 
   Card, CardBody, CardFooter, Stack, Heading, Button, Text, Input, Checkbox, Wrap, WrapItem 
 } from '@chakra-ui/react';
@@ -24,13 +26,13 @@ function InputForm() {
         padding={4}
       >
         <CardBody>
-          <Heading size='md' className='text-center'>
+          <Heading size='md' className='text-center' >
             Scan
           </Heading>
           <br />
-          <form className="max-w-sm" style={{ margin: '0 auto' }}>
+          <form className="max-w-sm" style={{ margin: '0 auto'}}>
             <div className='mb-5'>
-              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue">
                 Start IP Address
               </label>
               <Input
@@ -39,10 +41,11 @@ function InputForm() {
                 placeholder="XXX.XXX.X.X"
                 required
                 width="full"
+                backgroundColor={'#192235'}
               />
             </div>
             <div className='mb-5'>
-              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue">
                 End IP Address
               </label>
               <Input
@@ -51,6 +54,7 @@ function InputForm() {
                 placeholder="XXX.XXX.X.X"
                 required
                 width="full"
+                backgroundColor={'#192235'}
               />
             </div>
             <div className='flex justify-center pb-2'>
@@ -72,12 +76,11 @@ function InputForm() {
         <CardFooter>
         <Button
         variant='solid'
-        size='xs'
-        height={90}
+        size='s'
+        height={50}
         width={150}
         borderWidth={2}
         borderColor={'grey'}
-        backgroundImage="url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFncVTCnbE2yxiW6KGNuLLmBJ7Nqqrhm1_-t919CJHYg&s')" // Assuming the image is in the public directory
         backgroundSize="cover" // Ensure the image covers the entire button
         backgroundPosition="center" // Center the image on the button
          // You might want to set a text color that contrasts well with your image
@@ -85,7 +88,7 @@ function InputForm() {
           opacity: 0.85 // Optional: style for hover state
         }}
         onClick={() => setisClicked(true)}
-      >
+      >Submit
       </Button>
 
         </CardFooter>
