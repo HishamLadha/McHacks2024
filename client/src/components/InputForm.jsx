@@ -33,31 +33,19 @@ function InputForm() {
           <form className="max-w-sm" style={{ margin: '0 auto'}}>
             <div className='mb-5'>
               <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue">
-                Start IP Address
+                IP address (or range):
               </label>
               <Input
                 type="text"
                 id="ip"
-                placeholder="XXX.XXX.X.X"
+                placeholder="XXX.XXX.X.X or XXX.XXX.X.X-XXX"
                 required
                 width="full"
                 // backgroundColor={'#192235'}
                 className='dark:bg-slate-700 bg-white'
               />
             </div>
-            <div className='mb-5'>
-              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue">
-                End IP Address
-              </label>
-              <Input
-                type="text"
-                id="ip"
-                placeholder="XXX.XXX.X.X"
-                required
-                width="full"
-                className='dark:bg-slate-700 bg-white'
-              />
-            </div>
+            
             <div className='flex justify-center pb-2'>
               Additional options: 
             </div>
@@ -84,7 +72,8 @@ function InputForm() {
         borderColor={'grey'}
         backgroundSize="cover" // Ensure the image covers the entire button
         backgroundPosition="center" // Center the image on the button
-         // You might want to set a text color that contrasts well with your image
+        textColor={'white'}
+        backgroundColor={'#192235'} // You might want to set a text color that contrasts well with your image
         _hover={{
           opacity: 0.85 // Optional: style for hover state
         }}

@@ -11,6 +11,9 @@ function SessionsCard() {
 
   const executeCommand = () => {
     // Placeholder for command execution logic
+    // Send variable command to backend
+    // Listen for response from backend and place into finalResult variable
+    // then change the bottom to be setResult(result)
     setResult(`Executed command: ${command}`);
   };
 
