@@ -53,6 +53,7 @@ class Network:
                 result = exploits.retrieve_data(port.version)
                 if result[0]:
                     result[1][0] = port.port #overwrite the id
+                    logging.warning("result: "+str(result[1]))
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
