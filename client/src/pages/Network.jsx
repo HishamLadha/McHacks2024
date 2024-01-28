@@ -10,13 +10,14 @@ import axios from "axios";
 export const Network = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [machines, setMachines] = useState({});
-    {'192.168.17.130': [
-      [[21, '2.3.4', 'exploit/unix/ftp/vsftpd_234_backdoor', '']],
-       [[5432, '8.3.0 - 8.3.7', 'exploit/linux/postgres/postgres_payload', 'LHOST']]
-    ]}
+   // {'192.168.17.130': [
+     // [[21, '2.3.4', 'exploit/unix/ftp/vsftpd_234_backdoor', '']],
+       //[[5432, '8.3.0 - 8.3.7', 'exploit/linux/postgres/postgres_payload', 'LHOST']]
+    //]}
 
-    const renderMachines = machines.map((item, index) => (
-      <NetworkCard ipAddress={i.status} vm_name={item.name} vm_path={item.path} vm_ip={item.ip} vm_os={item.os}></VMCard>
+
+    const renderMachines = .map((item, index) => (
+      <NetworkCard ipAddress={i.status} vm_name={item.name} vm_path={item.path} vm_ip={item.ip} vm_os={item.os}></NetworkCard>
   ))
 
     useEffect(() => {
@@ -49,7 +50,7 @@ export const Network = () => {
           <NetworkCard ipAddress={"192.168.0.1"} osVersion={"linux"} macAddress={"2132131"} ports={[{21:"vsftpd 2.3.4"}, {22:"OpenSSH 4.7p1 Debian 8ubuntu1 (protocol 2.0)"},{21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"}, {21:"vsftpd 2.3.4"} ]}  />
           <NetworkCard ipAddress={"192.168.0.1"} osVersion={"linux"} macAddress={"2132131"} ports={[]}  /> */}
           {machines.map((entry, index) => (
-            <NetworkCard ipAddress={index} osVersion="linux"  macAddress={"N/A"} data={entry} ports={}/> 
+            <NetworkCard ipAddress={index} osVersion="linux"  macAddress={"N/A"} data={entry}/> 
             // <div key={index}>
             //   <strong>Port: {entry[0]}</strong>
             //   <p>Version: {entry[1]}</p>
