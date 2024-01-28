@@ -5,8 +5,8 @@ function Front() {
   return (
   
   <>
-  
-    <div className="bg-hacker">Front</div>
+    {/* <img src='./hacker.jpg'/> */}
+    <div className="h-screen bg-hacker">Front</div>
     
   </>)
   
