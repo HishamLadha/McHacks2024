@@ -28,6 +28,7 @@ class Machine:
         logging.debug("scanning ip: "+str(self.ip))
         nm = nmap.PortScanner()
         nm.scan(self.ip, flags)
+        logging.debug("scan complete")
         return nm.all_hosts()
 
     def setName(self, name):
