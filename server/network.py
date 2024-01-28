@@ -28,7 +28,7 @@ class Network:
         self.machines = {}
         self.vulnerable_ports = {}
 
-    def runInitialNetworkScan(self):
+    async def runInitialNetworkScan(self):
         logging.debug("running initial network scan")
         nums = self.ip_range.split(".")
         ip_start = ".".join(nums[0:3])

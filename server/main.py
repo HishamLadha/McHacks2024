@@ -40,6 +40,9 @@ exploits.retrieve_data("8.3.0 - 8.3.7")
 
 network = None
 
+async def assign_scan_result():
+    await network.runInitialNetworkScan()
+
 @app.post("/interact")
 async def post_interact():
     pass
@@ -56,7 +59,7 @@ async def post_getip(request: Request):
         logging.debug("/scan called -> "+str(ip_range))
         global network
         network = Network(ip_range)
-        asyncio.create_task(network.runInitialNetworkScan())
+        task = asyncio.create_task(assign_scan_result())
         return JSONResponse(content={"status":"scan_started"})
 
     # except Exception as e:
