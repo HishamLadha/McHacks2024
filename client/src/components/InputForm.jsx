@@ -16,7 +16,7 @@ function InputForm() {
               <CardBody>
                 <Heading size='md' className='text-center'>Scan</Heading>
 
-                <Text py='2'>
+                <Text className='text-white'>
                   Caffè latte is a coffee beverage of Italian origin made with espresso
                   and steamed milk.Caffè latte is a coffee beverage of Italian origin made with espresso
                   and steamed milk.

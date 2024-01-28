@@ -25,7 +25,6 @@ export const Network = () => {
         <ProgressBar/>
       </div>
 
-
     </main>
 
 
