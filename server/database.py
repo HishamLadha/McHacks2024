@@ -35,7 +35,17 @@ class ExploitDB():
                 arguments TEXT NOT NULL
             );
             '''
+
+            create_sessions_table_query = '''
+                CREATE TABLE IF NOT EXISTS sessions (
+                    id INTEGER PRIMARY KEY,
+                    session_id TEXT NOT NULL,
+                    session_uuid TEXT NOT NULL
+            );
+            '''
+
             cursor.execute(create_table_query)
+            cursor.execute(create_sessions_table_query)
             connection.commit()
 
             logging.debug(f"Table 'exploits' created successfully.")
@@ -64,6 +74,30 @@ class ExploitDB():
             # Insert data into the table
             insert_query = '''
                 INSERT INTO exploits (version, path, arguments) VALUES (?, ?, ?);
+            '''
+            cursor.executemany(insert_query, data)
+            connection.commit()
+
+            logging.debug(f"Data inserted successfully.")
+
+        except sqlite3.Error as e:
+            logging.debug(f"Error inserting data: {e}")
+
+        finally:
+            if connection:
+                connection.close()
+
+    def add_session(self, data):
+
+        logging.debug(f"Adding data: {data}")
+            
+        try:
+            connection = sqlite3.connect("exploits.db")
+            cursor = connection.cursor()
+
+            # Insert data into the table
+            insert_query = '''
+                INSERT INTO sessions (session_id, session_uuid) VALUES (?, ?);
             '''
             cursor.executemany(insert_query, data)
             connection.commit()
@@ -135,3 +169,5 @@ class ExploitDB():
         finally:
             if connection:
                 connection.close()
+
+    
