@@ -9,6 +9,7 @@ import './css/style.css';
 
 import './charts/ChartjsConfig';
 
+import { ChakraProvider } from '@chakra-ui/react'
 // Import pages
 import Dashboard from './pages/Dashboard';
 import { Network } from './pages/Network';
@@ -25,6 +26,7 @@ function App() {
   }, [location.pathname]); // triggered on route change
 
   return (
+    <ChakraProvider>
     <>
       <Routes>
         <Route exact path="/" element={<Front />} />
@@ -33,6 +35,7 @@ function App() {
         
       </Routes>
     </>
+    </ChakraProvider>
   );
 }
 
