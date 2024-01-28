@@ -15,10 +15,13 @@ import Dashboard from './pages/Dashboard';
 import { Network } from './pages/Network';
 import Front from './pages/Front';
 import Sessions from './pages/Sessions';
+import axios from 'axios';
 
 function App() {
 
   const location = useLocation();
+  
+  axios.defaults.baseURL = "http://localhost:4000";
 
   useEffect(() => {
     document.querySelector('html').style.scrollBehavior = 'auto'

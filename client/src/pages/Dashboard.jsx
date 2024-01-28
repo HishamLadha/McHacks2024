@@ -3,9 +3,35 @@ import React, { useState } from 'react';
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
 import InputForm from '../components/InputForm';
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 function Dashboard() {
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [ipRange, setIpRange] = useState("");
+  const navigate = useNavigate();
+  const handleScan = (ev) => {
+    ev.preventDefault();
+    axios.post("/scan",{
+      ip_range:ipRange 
+    })
+    .then((data) => {
+      
+    })
+    .catch((err) => {console.log(err)});    
+  }
+
+  const handleChaos = (ev) => {
+    ev.preventDefault();
+    axios.post("/scan",{
+      ip_range: "192.168.17.130"
+    })
+    .then((data) => {
+      
+    })
+    .catch((err) => {console.log(err)}); 
+  }
 
   return (
     <div className="flex h-screen overflow-hidden">
@@ -25,7 +51,6 @@ function Dashboard() {
             
           </div>
           
-
 
 
         </main>
