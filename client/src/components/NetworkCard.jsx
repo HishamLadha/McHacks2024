@@ -36,13 +36,13 @@ function NetworkCard({ ipAddress, osVersion, macAddress, ports }) {
     <div className='shrink-0'>
       <img className="h-12 w-12" src={linux ? "https://upload.wikimedia.org/wikipedia/commons/f/f1/Icons8_flat_linux.svg" : "https://www.startpage.com/av/proxy-image?piurl=https%3A%2F%2Fencrypted-tbn0.gstatic.com%2Fimages%3Fq%3Dtbn%3AANd9GcSJkR6K8pXj2569lwyj-4y4aE0_h4xAUQxsIJiWkkLkZAj4IfzQFcHiFdc%26s&sp=1706417989T661fc04df1ccc2934fae6fcecd8be05c9e57bb25d8ac9c13181cb1e556cdbda6"} alt="OS version" />
     </div>
-    <div className="flex-grow">
-      <div className="text-lg font-bold text-black">IP address: <span className="text-gray-600 text-md font-medium">{ipAddress}</span></div>
-      <div className="text-lg font-bold text-black">OS version: <span className="text-gray-600 text-md font-medium">{osVersion}</span></div>
-      <div className="text-lg font-bold text-black">MAC address: <span className="text-gray-600 text-md font-medium">{macAddress}</span></div>
+    <div className="flex-grow ">
+      <div className="text-lg font-bold text-slate-900 dark:text-slate-800">IP address: <span className="text-gray-600 text-md font-medium">{ipAddress}</span></div>
+      <div className="text-lg font-bold text-slate-900 dark:text-slate-800">OS version: <span className="text-gray-600 text-md font-medium">{osVersion}</span></div>
+      <div className="text-lg font-bold text-slate-900 dark:text-slate-800">MAC address: <span className="text-gray-600 text-md font-medium">{macAddress}</span></div>
       <div className="flex justify-between items-center">
           
-          <div className="text-lg font-bold text-black">
+          <div className="text-lg font-bold text-slate-900 dark:text-slate-800">
             Port list: 
           </div>
           {Object.entries(ports)[0] ? (<button

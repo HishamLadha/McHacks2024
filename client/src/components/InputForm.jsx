@@ -30,7 +30,7 @@ function InputForm() {
           <br />
           <form className="max-w-sm" style={{ margin: '0 auto'}}>
             <div className='mb-5'>
-              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-gray-900 dark:text-blue">
+              <label htmlFor="ip" className="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-800">
                 IP Address
               </label>
               <Input
