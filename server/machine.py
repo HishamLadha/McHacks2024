@@ -25,7 +25,7 @@ class Machine:
         pass
 
     def scan(self, flags):
-        logging.debug("scanning ip: "+str(self.ip))
+        logging.debug("scanning ip: "+str(self.ip)+" "+str(flags))
         nm = nmap.PortScanner()
         nm.scan(self.ip, flags)
         logging.debug("scan complete")

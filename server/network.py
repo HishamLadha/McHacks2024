@@ -29,7 +29,8 @@ class Network:
         else:
             logging.debug("running scan on 1 ip")
             machine = Machine(self.ip_range)#in this case the range is just an ip
-            machine.scan("-sV")
+            data = machine.scan("-sV")
+            logging.debug("scan data: "+str(data))
             self.machines.append(machine)
             return
         
