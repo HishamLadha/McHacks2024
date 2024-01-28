@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import ProgressBar from './ProgressBar';
 
 import logo from '/public/logo.png';
@@ -7,6 +8,7 @@ import {
 } from '@chakra-ui/react';
 
 function InputForm() {
+  const [isClicked, setisClicked] = useState(false);
   return (
     <Card
       direction={{ base: 'column', sm: 'row' }}
@@ -30,40 +32,33 @@ function InputForm() {
           <br />
           <form className="max-w-sm" style={{ margin: '0 auto'}}>
             <div className='mb-5'>
+
               <label htmlFor="ip" className="block mb-2 text-sm font-medium text-slate-900 dark:text-slate-800">
-                IP Address
+                IP address (or range):
               </label>
               <Input
                 type="text"
                 id="ip"
-                placeholder="XXX-XXX-XXX"
+                placeholder="XXX.XXX.X.X or XXX.XXX.X.X-XXX"
                 required
                 width="full"
-                backgroundColor={'#192235'}
+                // backgroundColor={'#192235'}
+                className='dark:bg-slate-700 bg-white'
               />
             </div>
-            <div className="mb-5">
-              <label htmlFor="port" className="block mb-1 text-sm font-medium text-gray-900 dark:text-blue">
-                Port
-              </label>
-              <Input
-                type="text"
-                id="port"
-                placeholder="XXXX"
-                required
-                width="full"
-                backgroundColor={'#192235'}
-              />
+            
+            <div className='flex justify-center pb-2'>
+              Additional options: 
             </div>
             {/* Wrap component for options with checkboxes, allowing for wrapping */}
             <Wrap spacing="20px" justify="center">
               {/* Wrap each checkbox in a WrapItem for proper spacing */}
-              <WrapItem><Checkbox value="option1" >Option 1</Checkbox></WrapItem>
-              <WrapItem><Checkbox value="option2">Option 2</Checkbox></WrapItem>
-              <WrapItem><Checkbox value="option3">Option 3</Checkbox></WrapItem>
-              <WrapItem><Checkbox value="option4">Option 4</Checkbox></WrapItem>
-              <WrapItem><Checkbox value="option5">Option 5</Checkbox></WrapItem>
-              <WrapItem><Checkbox value="option6">Option 6</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option1">-sV</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option2">-sC</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option3">-T4</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option4">-O</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option5">-Pn</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option6">-oA</Checkbox></WrapItem>
               {/* Add more checkboxes as needed */}
             </Wrap>
           </form>
@@ -83,10 +78,19 @@ function InputForm() {
         _hover={{
           opacity: 0.85 // Optional: style for hover state
         }}
+        onClick={() => setisClicked(true)}
       >Submit
       </Button>
 
-        </CardFooter><ProgressBar/>
+        </CardFooter>
+        { isClicked && <>
+          <div>
+            <span className='font-medium text-md'>Running the following command:</span> <span className='text-md italic'>nmap -O -sV -T4 192.168.0.1/24</span>
+          </div>
+          <ProgressBar/>
+          </>
+        }
+        
       </Stack>
     </Card>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Sidebar from '../partials/Sidebar';
 import Header from '../partials/Header';
@@ -9,6 +9,14 @@ import NetworkCard from '../components/NetworkCard';
 
 export const Network = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [machines, setMachines] = useState({});
+
+    useEffect(() => {
+      axios.get("/machines")
+      .then((data) => {
+        console.log(data);
+      })
+    }, []);
 
   return ( 
   <div className="flex h-screen overflow-hidden">
