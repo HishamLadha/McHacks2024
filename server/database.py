@@ -63,7 +63,7 @@ class ExploitDB():
         logging.debug(f"Adding data: {data}")
 
         for d in data:
-            if self.retrieve_data(d[0]):
+            if self.retrieve_data(d[0])[0]:
                 logging.debug("Data already exists in the table. Skipping insertion.")
                 return
             
@@ -161,7 +161,7 @@ class ExploitDB():
             else:
                 logging.debug(f"No data found for '{version}'.")
 
-            return True if result else False
+            return (True, result) if result else (False, None)
 
         except sqlite3.Error as e:
             logging.debug(f"Error retrieving data: {e}")

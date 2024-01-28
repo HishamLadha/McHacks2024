@@ -27,7 +27,7 @@ class Network:
     def __init__(self, ip_range):
         self.ip_range = ip_range
         self.machines = []
-        self.vulnerable_ports = []
+        self.vulnerable_ports = {}
 
     def runInitialNetworkScan(self):
         logging.debug("running initial network scan")
@@ -48,11 +48,12 @@ class Network:
             ports = machine.scan("-sV")
             logging.debug("ports on "+str(self.ip_range))
             logging.debug(ports)
-            vulnerable_ports = []
             for port in ports:
-                if exploits.retrieve_data(port.version):
-                    # add the port to the machine
-                    vulnerable_ports.append(port)
+                result = exploits.retrieve_data(port.version)
+                if result[0]:
+                    logging.warning("vulnerable port: "+str(port))
+                    logging.warning(result[1])
+                    self.vulnerable_ports[port] = result[1]
                     
             self.machines.append(machine)
             return
@@ -61,9 +62,9 @@ class Network:
             machine = Machine(ip_start+"."+str(i))
             ports = machine.scan("-sV")
             for port in ports:
-                if exploits.retrieve_data(port.service):
-                    # add the port to the machine
-                    self.vulnerable_ports.append(port)
+                result = exploits.retrieve_data(port.service)
+                if result[0]:
+                    self.vulnerable_ports[port] = result[1]
             logging.debug("scan: "+str(ports))
             self.machines.append(machine)
 
