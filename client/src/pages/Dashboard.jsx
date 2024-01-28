@@ -13,13 +13,19 @@ function Dashboard() {
   const handleScan = (ev) => {
     ev.preventDefault();
     axios.post("/scan",{
-        ip_range:ipRange 
+      ip_range:ipRange 
     })
     .then((data) => {})
-    .catch((err) => {console.log(err)});
+    .catch((err) => {console.log(err)});    
+  }
 
-
-    
+  const handleChaos = (ev) => {
+    ev.preventDefault();
+    axios.post("/scan",{
+      ip_range: "192.168.17.130"
+    })
+    .then((data) => {})
+    .catch((err) => {console.log(err)}); 
   }
 
   return (
@@ -43,6 +49,12 @@ function Dashboard() {
               <h4>Ip Range</h4>
               <input type="text"  value={ipRange} onChange={ev => setIpRange(ev.target.value)}/>
               <input type="submit" value="Scan" className='ml-4 p-4 rounded-md bg-blue-400'/>
+            </form>
+
+            or
+
+            <form action="" onSubmit={handleChaos}>
+              <input type="submit" value="Chaos" className='bg-red-500 rounded-md'/>
             </form>
              
           
