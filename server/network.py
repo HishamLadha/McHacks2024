@@ -51,6 +51,7 @@ class Network:
             logging.debug(ports)
             for port in ports:
                 result = exploits.retrieve_data(port.version)
+                result[1][0] = list(result[1][0])
                 logging.debug(result)
                 if result[0]:
                     result[1][0][0] = port.port #overwrite the id
@@ -68,6 +69,7 @@ class Network:
             ports = machine.scan("-sV")
             for port in ports:
                 result = exploits.retrieve_data(port.service)
+                result[1][0] = list(result[1][0])
                 if result[0]:
                     result[1][0][0] = port.port
                     logging.warning("vulnerable port: "+str(port.port))
