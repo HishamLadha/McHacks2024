@@ -9,8 +9,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "hacker": "url(/hacker.png)",
-
+        'hacker': 'url(./hacker01.png)',
       },
       boxShadow: {
         DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.02)',
