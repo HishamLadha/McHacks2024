@@ -24,7 +24,7 @@ function SessionsCard() {
       <h2 className="text-lg font-bold mb-4">IP address: {ipAddress}</h2>
       <h2 className="text-lg font-bold mb-4">OS version: {os}</h2>
       <div className="mb-4">
-        <label className="text-lg font-bold">Command:</label>
+        <label className="text-lg font-bold text-slate-900 dark:text-slate-800">Command:</label>
         <div className="flex mt-1">
           <input
             type="text"
@@ -42,7 +42,7 @@ function SessionsCard() {
         </div>
       </div>
       <div>
-        <label className="text-lg font-bold">Result:</label>
+        <label className="text-lg font-bold text-slate-900 dark:text-slate-800">Result:</label>
         <div className="mt-1 p-2 border rounded-lg bg-gray-50 h-32">
           {result}
         </div>
