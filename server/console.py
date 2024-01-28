@@ -120,9 +120,3 @@ async def testing():
     # await console.set_argument("lhost","eth0")
     # await console.run_payload()
 
-logging.debug("STARTING AUTOEXPLOIT")
-loop = asyncio.get_event_loop()
-try:
-    loop.run_until_complete(testing())
-finally:
-    loop.close()
