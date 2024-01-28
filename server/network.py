@@ -46,10 +46,7 @@ class Network:
             
             logging.debug("running scan on 1 ip")
             machine = Machine(self.ip_range)#in this case the range is just an ip
-            self.machines[machine.ip] = {
-                "machine":machine,
-                "vulnerable_ports":[]
-            }
+            self.machines[machine.ip] = []
             ports = machine.scan("-sV")
             logging.debug("ports on "+str(self.ip_range))
             logging.debug(ports)
@@ -60,15 +57,12 @@ class Network:
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
-                    self.machines[machine.ip]["vulnerable_ports"] = result[1]
+                    self.machines[machine.ip].append(result[1])
             return
         
         for i in range(int(start), int(end)):
             machine = Machine(ip_start+"."+str(i))
-            self.machines[machine.ip] = {
-                "machine":machine,
-                "vulnerable_ports":[]
-            }
+            self.machines[machine.ip] = []
             ports = machine.scan("-sV")
             for port in ports:
                 result = exploits.retrieve_data(port.service)
@@ -77,7 +71,7 @@ class Network:
                     logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
-                    self.machines[machine.ip]["vulnerable_ports"] = result[1]
+                    self.machines[machine.ip].append(result[1])
 
             logging.debug("scan: "+str(ports))
 
