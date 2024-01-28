@@ -26,7 +26,7 @@ class Network:
 
     def __init__(self, ip_range):
         self.ip_range = ip_range
-        self.machines = []
+        self.machines = {}
         self.vulnerable_ports = {}
 
     def runInitialNetworkScan(self):
@@ -43,30 +43,43 @@ class Network:
             end = nums2[1]
             logging.debug("scanning range from "+str(start)+" to "+str(end))
         else:
+            
             logging.debug("running scan on 1 ip")
             machine = Machine(self.ip_range)#in this case the range is just an ip
+            self.machines[machine.ip] = {
+                "machine":machine,
+                "vulnerable_ports":[]
+            }
             ports = machine.scan("-sV")
             logging.debug("ports on "+str(self.ip_range))
             logging.debug(ports)
             for port in ports:
                 result = exploits.retrieve_data(port.version)
                 if result[0]:
-                    logging.warning("vulnerable port: "+str(port))
+                    result[1][0] = port.port #overwrite the id
+                    logging.warning("vulnerable port: "+str(port.port))
                     logging.warning(result[1])
-                    self.vulnerable_ports[port] = result[1]
-                    
-            self.machines.append(machine)
+                    self.vulnerable_ports[port.port] = result[1]
+                    self.machines[machine.ip]["vulnerable_ports"] = result[1]
             return
         
         for i in range(int(start), int(end)):
             machine = Machine(ip_start+"."+str(i))
+            self.machines[machine.ip] = {
+                "machine":machine,
+                "vulnerable_ports":[]
+            }
             ports = machine.scan("-sV")
             for port in ports:
                 result = exploits.retrieve_data(port.service)
                 if result[0]:
-                    self.vulnerable_ports[port] = result[1]
+                    result[1][0] = port.port
+                    logging.warning("vulnerable port: "+str(port.port))
+                    logging.warning(result[1])
+                    self.vulnerable_ports[port.port] = result[1]
+                    self.machines[machine.ip]["vulnerable_ports"] = result[1]
+
             logging.debug("scan: "+str(ports))
-            self.machines.append(machine)
 
     def getMachines(self):
         return self.machines
