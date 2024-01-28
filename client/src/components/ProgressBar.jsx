@@ -21,7 +21,7 @@ const ProgressBar = () => {
         className="h-full bg-blue-500 rounded-lg"
         style={{ width: `${progress}%` }}
       ></div>
-      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-800 via-blue-900 to-blue-800 opacity-50"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-blue-192235 via-blue-900 to-blue-800 opacity-50"></div>
     </div>
   );
 };

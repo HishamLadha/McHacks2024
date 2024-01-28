@@ -58,7 +58,7 @@ function InputForm() {
             {/* Wrap component for options with checkboxes, allowing for wrapping */}
             <Wrap spacing="20px" justify="center">
               {/* Wrap each checkbox in a WrapItem for proper spacing */}
-              <WrapItem><Checkbox value="option1">Option 1</Checkbox></WrapItem>
+              <WrapItem><Checkbox value="option1" >Option 1</Checkbox></WrapItem>
               <WrapItem><Checkbox value="option2">Option 2</Checkbox></WrapItem>
               <WrapItem><Checkbox value="option3">Option 3</Checkbox></WrapItem>
               <WrapItem><Checkbox value="option4">Option 4</Checkbox></WrapItem>
@@ -78,7 +78,8 @@ function InputForm() {
         borderColor={'grey'}
         backgroundSize="cover" // Ensure the image covers the entire button
         backgroundPosition="center" // Center the image on the button
-         // You might want to set a text color that contrasts well with your image
+        textColor={'white'}
+        backgroundColor={'#192235'} // You might want to set a text color that contrasts well with your image
         _hover={{
           opacity: 0.85 // Optional: style for hover state
         }}
