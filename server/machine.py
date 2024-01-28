@@ -40,6 +40,7 @@ class Machine:
         logging.debug("running scan on: "+str(self.ip))
 
         nm = nmap.PortScanner()
+        flags += " -p 80,5432,21,22"
         nm.scan(hosts=self.ip, arguments=flags)
         logging.debug("scan complete for :"+str(self.ip))
         logging.debug(nm.all_hosts())
