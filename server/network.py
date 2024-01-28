@@ -1,11 +1,24 @@
 import logging
 from machine import Machine
+from database import ExploitDB
 
 logging.basicConfig(
     level=logging.DEBUG,
     format='%(levelname)s [%(asctime)s] %(filename)s:%(lineno)d - %(message)s',
     datefmt='%Y-%m-%d %H:%M:%S'
 )
+
+exploits = ExploitDB()
+
+data = [
+    ("vsftpd 2.3.4", "exploit/unix/ftp/vsftpd_234_backdoor", ""),
+    ("PostgreSQL DB 8.3.0 - 8.3.7", "exploit/linux/postgres/postgres_payload", "LHOST"),
+]
+
+exploits.add_entry(data)
+
+exploits.retrieve_data("vsftpd 2.3.4")
+
 
 class Network:
     # has a propery of machine objects in a list
@@ -14,6 +27,7 @@ class Network:
     def __init__(self, ip_range):
         self.ip_range = ip_range
         self.machines = []
+        self.vulnerable_ports = []
 
     def runInitialNetworkScan(self):
         logging.debug("running initial network scan")
@@ -29,14 +43,26 @@ class Network:
         else:
             logging.debug("running scan on 1 ip")
             machine = Machine(self.ip_range)#in this case the range is just an ip
-            machine.scan("-sV")
+            ports = machine.scan("-sV")
+            logging.debug("ports on "+str(self.ip_range))
+            logging.debug(ports)
+            vulnerable_ports = []
+            for port in ports:
+                if exploits.retrieve_data(port.service):
+                    # add the port to the machine
+                    vulnerable_ports.append(port)
+                    
             self.machines.append(machine)
             return
         
         for i in range(int(start), int(end)):
             machine = Machine(ip_start+"."+str(i))
-            scan_data = machine.scan("-sV")
-            logging.debug("scan: "+str(scan_data))
+            ports = machine.scan("-sV")
+            for port in ports:
+                if exploits.retrieve_data(port.service):
+                    # add the port to the machine
+                    self.vulnerable_ports.append(port)
+            logging.debug("scan: "+str(ports))
             self.machines.append(machine)
 
     def getMachines(self):

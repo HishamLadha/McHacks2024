@@ -8,6 +8,12 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S'
 )
 
+class Port:
+    def __init__(self, port, service, version):
+        self.port = port
+        self.service = service
+        self.version = service + " " + version
+
 class Machine:
     def __init__(self, ip):
         # self.os = os
@@ -25,11 +31,22 @@ class Machine:
         pass
 
     def scan(self, flags):
-        logging.debug("scanning ip: "+str(self.ip))
+        # now run a nmap scan on all ports on the machine
+        logging.debug("running scan on: "+str(self.ip))
         nm = nmap.PortScanner()
-        nm.scan(self.ip, flags)
-        logging.debug("scan complete")
-        return nm.all_hosts()
+        nm.scan(hosts=self.ip, arguments=flags)
+        logging.debug("scan complete for :"+str(self.ip))
+
+        ports = []
+
+        for host in nm.all_hosts():
+            for port, info in nm[host]['tcp'].items():
+                service = info.get('name', 'Unknown')
+                version = info.get('version', 'Unknown')
+                ports.append(Port(port, service, version))
+
+        # need to parse the data from the nmap scan
+        return ports
 
     def setName(self, name):
         self.name = name
