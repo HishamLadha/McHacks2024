@@ -7,6 +7,13 @@ from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(levelname)s [%(asctime)s] %(filename)s:%(lineno)d - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 app = FastAPI(timeout=86400)
 
 origins = ["*"]

@@ -1,6 +1,12 @@
 import logging
 from machine import Machine
 
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(levelname)s [%(asctime)s] %(filename)s:%(lineno)d - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 class Network:
     # has a propery of machine objects in a list
     # has a property of the ip range (start and end)

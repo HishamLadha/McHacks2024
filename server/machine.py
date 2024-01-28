@@ -1,6 +1,13 @@
 import nmap
 import logging
 
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format='%(levelname)s [%(asctime)s] %(filename)s:%(lineno)d - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+
 class Machine:
     def __init__(self, ip):
         # self.os = os
