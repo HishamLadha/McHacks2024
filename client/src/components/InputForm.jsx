@@ -41,7 +41,8 @@ function InputForm() {
                 placeholder="XXX.XXX.X.X"
                 required
                 width="full"
-                backgroundColor={'#192235'}
+                // backgroundColor={'#192235'}
+                className='dark:bg-slate-700 bg-white'
               />
             </div>
             <div className='mb-5'>
@@ -54,7 +55,7 @@ function InputForm() {
                 placeholder="XXX.XXX.X.X"
                 required
                 width="full"
-                backgroundColor={'#192235'}
+                className='dark:bg-slate-700 bg-white'
               />
             </div>
             <div className='flex justify-center pb-2'>
