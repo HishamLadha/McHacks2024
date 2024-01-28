@@ -35,7 +35,8 @@ data = [
 
 exploits.add_entry(data)
 
-exploits.retrieve_data("vsftpd 2.3.4")
+exploits.retrieve_data("2.3.4")
+exploits.retrieve_data("8.3.0 - 8.3.7")
 
 network = None
 
