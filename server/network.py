@@ -57,6 +57,7 @@ class Network:
                     logging.warning(result[1])
                     self.vulnerable_ports[port.port] = result[1]
                     self.machines[machine.ip].append(result[1])
+            print(self.machines)
             return
         
         for i in range(int(start), int(end)):
