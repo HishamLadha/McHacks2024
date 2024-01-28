@@ -10,6 +10,7 @@ class Network:
         self.machines = []
 
     def runInitialNetworkScan(self):
+        logging.debug("running initial network scan")
         nums = self.range.split(".")
         ip_start = ".".join(nums[0:3])
         start = None

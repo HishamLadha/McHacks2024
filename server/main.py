@@ -48,6 +48,9 @@ async def post_getip(request: Request):
     # except Exception as e:
         # return JSONResponse(content={"status":"GETIP_FAILED","detail":str(e)})
 
+@app.post("/status_scan")
+async def post_status_scan(request: Request):
+    logging.debug("polling status scan")
 
 logging.basicConfig(level=logging.DEBUG)
 uvicorn.run(app, host="localhost", port=4000)

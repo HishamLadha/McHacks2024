@@ -1,4 +1,5 @@
 import nmap
+import logging
 
 class Machine:
     def __init__(self, ip):
@@ -17,6 +18,7 @@ class Machine:
         pass
 
     def scan(self, flags):
+        logging.debug("scanning ip: "+self.ip)
         nm = nmap.PortScanner()
         nm.scan(self.ip, flags)
         return nm.all_hosts()
