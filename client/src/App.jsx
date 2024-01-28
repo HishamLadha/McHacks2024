@@ -12,6 +12,7 @@ import './charts/ChartjsConfig';
 // Import pages
 import Dashboard from './pages/Dashboard';
 import { Network } from './pages/Network';
+import Front from './pages/Front';
 
 function App() {
 
@@ -26,7 +27,8 @@ function App() {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={<Dashboard />} />
+        <Route exact path="/" element={<Front />} />
+        <Route exact path="/scan" element={<Dashboard />} />
         <Route exact path="/network" element={<Network />} />
         
       </Routes>
