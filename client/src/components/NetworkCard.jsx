@@ -33,7 +33,7 @@ function PortCard({ port, service, ipAddress }) {
   );
 }
 
-function NetworkCard({ ipAddress, osVersion, macAddress, ports, data}) {
+function NetworkCard({ ipAddress, osVersion, macAddress, data}) {
   const [showPorts, setShowPorts] = useState(false); // State to control the visibility of the port cards
   let linux = false;
 
@@ -60,7 +60,7 @@ function NetworkCard({ ipAddress, osVersion, macAddress, ports, data}) {
             Port list: 
 
           </div>
-          {Object.entries(ports)[0] ? (<button
+          {data ? (<button
             onClick={togglePorts}
             className="text-xl text-gray-500 bg-transparent hover:bg-gray-100 rounded px-2 py-1"
           >
@@ -72,15 +72,15 @@ function NetworkCard({ ipAddress, osVersion, macAddress, ports, data}) {
         {showPorts && (
           <div className="grid grid-cols-2 gap-3">
             {data.map((portObj, index) => {
-              return <PortCard key={index} port={portObj[0][0]} service={"test"} ipAddress={ipAddress} />;
+              return <PortCard key={index} port={portObj[1]} service={"test"} ipAddress={ipAddress} />;
             })}
           </div>
         )}
 
       </div>
       <div className="flex items-center">
-        {Object.entries(ports)[0] ? <span className="block w-3 h-3 bg-green-500 rounded-full"></span> : <span className="block w-3 h-3 bg-red-500 rounded-full mr-2"></span>}
-
+        {data ? <span className="block w-3 h-3 bg-green-500 rounded-full"></span> : <span className="block w-3 h-3 bg-red-500 rounded-full mr-2"></span>}
+        
 
       </div>
 

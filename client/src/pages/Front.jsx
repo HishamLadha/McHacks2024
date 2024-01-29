@@ -10,7 +10,7 @@ function Front() {
         e.preventDefault();
         // Here you would usually handle the login logic, perhaps sending a request to your backend server
         console.log('Login Submitted', { username, password });
-        if(username == "elitehacker" && password == "password123"){
+        if(username == "root" && password == "root"){
           window.location.href="http://localhost:5173/scan";
         }
         else{

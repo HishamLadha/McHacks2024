@@ -58,7 +58,7 @@ function InputForm() {
                 value={ipRange}
           	onChange={(ev) => setIpRange(ev.target.value)}      
 	  // backgroundColor={'#192235'}
-                className='dark:bg-slate-700 bg-white'
+                className='dark:bg-slate-700 bg-white text-white'
               />
             </div>
             
