@@ -1,29 +1,83 @@
-<mxfile host="app.diagrams.net" modified="2024-01-31T23:46:39.259Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0" etag="a33ZcyHFrdoEMygSIozg" version="23.1.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2024-02-01T00:38:29.061Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:122.0) Gecko/20100101 Firefox/122.0" etag="kAF5gZ7eBaHAjJCRWguL" version="23.1.0" type="github" pages="2">
   <diagram id="C5RBs43oDa-KdzZeNtuy" name="Workspaces">
-    <mxGraphModel dx="1434" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1674" dy="774" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
         <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
-        <mxCell id="v_i5tdnr1hRKdBCCS-yl-0" value="&lt;div align=&quot;left&quot;&gt;Description: This page contains the workspace.&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;When the client starts the tool, they will need to create a workspace before being able to do any actions. All information will be stored under that&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;workspace. When a client closes the tool their progress wont be lost since the state is stored. When they restart the tool the workspacecan be&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;restarted and the state is loaded.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="v_i5tdnr1hRKdBCCS-yl-0" value="&lt;div align=&quot;left&quot;&gt;Description: This page contains the workspace.&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;When the client starts the tool, they will need to create a workspace before being able to do any actions. All information will be stored under that&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;workspace. When a client closes the tool their progress wont be lost since the state is stored. When they restart the tool the workspacecan be&amp;nbsp;&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;restarted and the state is loaded.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="27" y="60" width="800" height="70" as="geometry" />
         </mxCell>
-        <mxCell id="EzBYOWv9G92g1Ca4GdDH-0" value="Workspaces" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+        <mxCell id="EzBYOWv9G92g1Ca4GdDH-0" value="Workspaces" style="text;strokeColor=none;fillColor=none;html=1;fontSize=24;fontStyle=1;verticalAlign=middle;align=center;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
           <mxGeometry x="364" y="20" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EzBYOWv9G92g1Ca4GdDH-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="EzBYOWv9G92g1Ca4GdDH-1" target="EzBYOWv9G92g1Ca4GdDH-4">
+        <mxCell id="EzBYOWv9G92g1Ca4GdDH-5" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="EzBYOWv9G92g1Ca4GdDH-1" target="EzBYOWv9G92g1Ca4GdDH-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EzBYOWv9G92g1Ca4GdDH-1" value="Visit" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="30" y="180" width="40" height="30" as="geometry" />
+        <mxCell id="EzBYOWv9G92g1Ca4GdDH-1" value="Visit /workspaces" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="80" y="165" width="100" height="40" as="geometry" />
         </mxCell>
-        <mxCell id="EzBYOWv9G92g1Ca4GdDH-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="EzBYOWv9G92g1Ca4GdDH-4" target="EzBYOWv9G92g1Ca4GdDH-6">
+        <mxCell id="EzBYOWv9G92g1Ca4GdDH-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="EzBYOWv9G92g1Ca4GdDH-4" target="EzBYOWv9G92g1Ca4GdDH-6" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="EzBYOWv9G92g1Ca4GdDH-4" value="useEffect" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="150" y="180" width="80" height="30" as="geometry" />
+        <mxCell id="EzBYOWv9G92g1Ca4GdDH-4" value="useEffect" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="220" y="170" width="80" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="EzBYOWv9G92g1Ca4GdDH-6" value="&lt;div&gt;Retrieve workspaces&lt;/div&gt;&lt;div&gt;/workspaces&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
-          <mxGeometry x="270" y="170" width="120" height="50" as="geometry" />
+        <mxCell id="D6aifxGHfua1EfnfKiCL-1" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="EzBYOWv9G92g1Ca4GdDH-6" target="D6aifxGHfua1EfnfKiCL-0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="EzBYOWv9G92g1Ca4GdDH-6" value="&lt;div&gt;Retrieve workspaces&lt;/div&gt;&lt;div&gt;/workspaces&lt;br&gt;&lt;/div&gt;" style="rounded=0;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="340" y="160" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-0" value="Map data to &amp;lt;Workspace /&amp;gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="510" y="160" width="130" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-15" value="Workspace Component" style="swimlane;startSize=20;horizontal=1;childLayout=treeLayout;horizontalTree=0;resizable=0;containerType=tree;fontSize=12;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="80" y="270" width="470" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-16" value="&amp;lt;Workspace /&amp;gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="185" y="40" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-17" value="Load" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="20" y="130" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-18" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=1;curved=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;startSize=6;endSize=6;" edge="1" parent="D6aifxGHfua1EfnfKiCL-15" source="D6aifxGHfua1EfnfKiCL-16" target="D6aifxGHfua1EfnfKiCL-17">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-19" value="Rename" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="185" y="130" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-20" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=1;curved=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;startSize=6;endSize=6;" edge="1" parent="D6aifxGHfua1EfnfKiCL-15" source="D6aifxGHfua1EfnfKiCL-16" target="D6aifxGHfua1EfnfKiCL-19">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-28" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" source="D6aifxGHfua1EfnfKiCL-16" target="D6aifxGHfua1EfnfKiCL-29" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-29" value="Remove" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="350" y="130" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-30" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=1;curved=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;startSize=6;endSize=6;" edge="1" target="D6aifxGHfua1EfnfKiCL-31" source="D6aifxGHfua1EfnfKiCL-17" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="175.175" y="410" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-31" value="navigate /" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="20" y="220" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-32" value="" style="edgeStyle=elbowEdgeStyle;elbow=vertical;html=1;rounded=1;curved=0;sourcePerimeterSpacing=0;targetPerimeterSpacing=0;startSize=6;endSize=6;" edge="1" target="D6aifxGHfua1EfnfKiCL-33" source="D6aifxGHfua1EfnfKiCL-19" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="120.17500000000001" y="370" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-33" value="&lt;div&gt;PUT /workspaces/&lt;/div&gt;&lt;div&gt;{&quot;name&quot;:&amp;lt;new_name&amp;gt;}&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="160" y="220" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-37" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" target="D6aifxGHfua1EfnfKiCL-38" source="D6aifxGHfua1EfnfKiCL-29" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="365.5" y="330" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="D6aifxGHfua1EfnfKiCL-38" value="&lt;div&gt;DELETE&lt;/div&gt;&lt;div&gt;/workspaces/&lt;/div&gt;&lt;div&gt;{session_id}&lt;br&gt;&lt;/div&gt;" style="whiteSpace=wrap;html=1;" vertex="1" parent="D6aifxGHfua1EfnfKiCL-15">
+          <mxGeometry x="350" y="220" width="100" height="50" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
